@@ -1,0 +1,17 @@
+Enter in environment mode: source /Users/anthonyventura/Desktop/Internship/bin/activate
+
+Run the API test: python3 api-test.py
+
+Deactivate environment: deactivate
+
+Run the server: python manage.py runserver
+
+Create superuser: python manage.py createsuperuser
+
+Run migrations: python manage.py migrate
+
+Run tests: python manage.py test
+
+Run the admin: python manage.py runserver
+
+
