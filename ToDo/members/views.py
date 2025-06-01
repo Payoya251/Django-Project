@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from .serializers import MessageSerializer
 
 # Regular Django view
+@api_view(['GET'])
 def members(request):
-    return Response("Hello World!")
+    return Response({"message": "Hello World!"})
 
 # API View using DRF
 @api_view(['GET'])
