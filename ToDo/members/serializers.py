@@ -1,6 +1,5 @@
 from rest_framework import serializers
 
-class MessageSerializer(serializers.Serializer):
-    message = serializers.CharField()
-    framework = serializers.CharField()
-    user = serializers.CharField(required=False)  # Made optional since it has a default value
+class SquareRootSerializer(serializers.Serializer):
+    number = serializers.FloatField(min_value=0)
+    result = serializers.FloatField(required=False)

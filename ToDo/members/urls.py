@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.members, name='members'),
-    path('api/hello/', views.api_hello, name='api_hello'),
+    path('api/square-root/', views.calculate_square_root, name='calculate_square_root'),
 ]

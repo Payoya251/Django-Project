@@ -1,19 +1,31 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import MessageSerializer
+from rest_framework import status
+from .serializers import SquareRootSerializer
+import math
 
 # Regular Django view
 @api_view(['GET'])
 def members(request):
-    return Response({"message": "Hello World!"})
+    return Response({"message": "Welcome to the Api"})
 
-# API View using DRF
 @api_view(['GET'])
-def api_hello(request):
-    message = {
-        'message': 'Helloooooo',
-        'framework': 'Django REST framework',
-        'user': 'anonymous'  # Adding user field to match the serializer
-    }
-    serializer = MessageSerializer(message)
-    return Response(serializer.data)
+def calculate_square_root(request):
+
+    number = int(request.query_params.get('number', None))
+
+    try:
+        data = {
+            'number': number,
+            'result': math.sqrt(number)
+        }
+        
+        serializer = SquareRootSerializer(instance=data)
+        return Response(serializer.data)
+
+    except:
+        
+        return Response(
+            {"error": "Number must be greater than 0"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
