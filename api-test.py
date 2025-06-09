@@ -1,19 +1,13 @@
 import requests
 
-def test_square_root(number):
+def square_root(number):
 
-    try:
-
-        response = requests.get(
-            'http://127.0.0.1:8000/api/square-root/',
-            params={'number': number}
-        )
-
-        print(f"Square root of {number} is: {response.json()['result']}")
-            
-    except requests.exceptions.RequestException as e:
-        print(f"Request Error: {e}")
+    response = requests.get(
+        'http://127.0.0.1:8000/api/square-root/',
+        params={'number': number}
+    )
+    return response.json()['result']
 
 if __name__ == "__main__":
-    
-    test_square_root(4)
+
+    print(square_root(64))

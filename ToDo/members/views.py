@@ -12,20 +12,12 @@ def members(request):
 @api_view(['GET'])
 def calculate_square_root(request):
 
-    number = int(request.query_params.get('number', None))
-
-    try:
-        data = {
-            'number': number,
-            'result': math.sqrt(number)
-        }
+    number = float(request.query_params.get('number'))
         
-        serializer = SquareRootSerializer(instance=data)
-        return Response(serializer.data)
-
-    except:
-        
-        return Response(
-            {"error": "Number must be greater than 0"},
-            status=status.HTTP_400_BAD_REQUEST
-        )
+    result = math.sqrt(number)
+    data = {
+        'number': number,
+        'result': result
+    }
+    serializer = SquareRootSerializer(instance=data)
+    return Response(serializer.data)
